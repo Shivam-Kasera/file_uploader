@@ -42,6 +42,7 @@ const AllFilesPage = () => {
         <div className='h-full overflow-auto no-scrollbar'>
           {
             user && user.myFiles && user.myFiles.map((fileInfo) => (
+              fileType === "" && (
                 <FileViewCard
                   key={fileInfo?._id}
                   id={fileInfo?._id}
@@ -51,6 +52,7 @@ const AllFilesPage = () => {
                   upload_date={fileInfo?.upload_date}
                   isPublic={fileInfo?.public}
                 />
+              )
             ))
           }
         </div>
