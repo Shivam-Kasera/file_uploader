@@ -74,10 +74,16 @@ const FileViewCard = ({
                         </button>
                     </div>
                     <button
-                        className='lg:hidden w-full px-5 py-2 mt-3 bg-red-600 rounded-lg font-semibold text-white uppercase'
+                        className='lg:hidden w-full px-5 py-2 mt-3 bg-green-600 rounded-lg font-semibold text-white uppercase'
                         onClick={downloadFile}
                     >
                         download
+                    </button>
+                    <button
+                        className='lg:hidden w-full px-5 py-2 mt-3 bg-red-600 rounded-lg font-semibold text-white uppercase'
+                        onClick={downloadFile}
+                    >
+                        delete
                     </button>
                 </div>
             </div>

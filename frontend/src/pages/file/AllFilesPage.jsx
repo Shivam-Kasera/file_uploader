@@ -39,23 +39,25 @@ const AllFilesPage = () => {
             />
           </div>
         </div>
-        <div className='h-full overflow-auto no-scrollbar'>
-          {
-            user && user.myFiles && user.myFiles.map((fileInfo) => (
-              fileType === "" && (
-                <FileViewCard
-                  key={fileInfo?._id}
-                  id={fileInfo?._id}
-                  fileName={fileInfo?.fileName}
-                  fileType={fileInfo.fileType}
-                  fileSize={fileInfo?.fileSize}
-                  upload_date={fileInfo?.upload_date}
-                  isPublic={fileInfo?.public}
-                />
-              )
-            ))
-          }
-        </div>
+        {
+          fileType === "" && (
+            <div className='h-full overflow-auto no-scrollbar'>
+              {
+                user && user.myFiles && user.myFiles.map((fileInfo) => (
+                  <FileViewCard
+                    key={fileInfo?._id}
+                    id={fileInfo?._id}
+                    fileName={fileInfo?.fileName}
+                    fileType={fileInfo.fileType}
+                    fileSize={fileInfo?.fileSize}
+                    upload_date={fileInfo?.upload_date}
+                    isPublic={fileInfo?.public}
+                  />
+                ))
+              }
+            </div>
+          )
+        }
         {
           fileType === "pdf" && (
             <div className='h-full overflow-auto no-scrollbar'>
