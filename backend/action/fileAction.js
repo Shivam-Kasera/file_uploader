@@ -90,7 +90,7 @@ export const deleteFile = async (req, res) => {
     try {
         const user = req.user;
         const { fileName, id } = req.params;
-        const filePath = path.join(__dirname, `backend/${user?._id}/${fileName}`);
+        const filePath = path.join(__dirname, `/${user?._id}/${fileName}`);
         try {
             await fs.promises.access(filePath, fs.constants.F_OK);
         } catch (error) {

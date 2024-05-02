@@ -23,8 +23,6 @@ const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const userId = req.user._id;
         const userDir = `backend/${userId}`;
-        console.log(file)
-        console.log(req?.file)
         req.user = { ...req.user._doc, fileName: file.originalname }
         fs.mkdirSync(userDir, { recursive: true })
         cb(null, userDir);
