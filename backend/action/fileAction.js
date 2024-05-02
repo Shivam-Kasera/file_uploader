@@ -1,5 +1,6 @@
 import { User } from "../model/userModel.js"
 import { sendError } from "../sendError.js"
+import { __dirname } from "../server.js"
 import path from 'path';
 import fs from "fs"
 
@@ -69,13 +70,13 @@ export const downloadFile = async (req, res) => {
     try {
         const user = req.user;
         const { fileName } = req.params;
-        const rootDir = process.cwd();
-        const filePath = path.join(rootDir, `backend/${user?._id}/${fileName}`);
+        const filePath = path.join(__dirname, `/${user?._id}/${fileName}`);
         fs.access(filePath, fs.constants.F_OK, (err) => {
             if (err) {
                 return res.status(404).json({
                     success: false,
-                    message: "File not found"
+                    message: "File not found",
+                    filePath
                 });
             }
         })
@@ -89,8 +90,7 @@ export const deleteFile = async (req, res) => {
     try {
         const user = req.user;
         const { fileName, id } = req.params;
-        const rootDir = process.cwd();
-        const filePath = path.join(rootDir, `backend/${user?._id}/${fileName}`);
+        const filePath = path.join(__dirname, `backend/${user?._id}/${fileName}`);
         try {
             await fs.promises.access(filePath, fs.constants.F_OK);
         } catch (error) {
