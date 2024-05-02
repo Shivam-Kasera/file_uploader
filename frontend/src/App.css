@@ -1,0 +1,38 @@
+.input_required::after{
+    content: "*";
+    color: red;
+}
+
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, :root{
+  height: 100%;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+#selectedFolder{
+  background-color: rgb(220 38 38) !important;
+  color: white;
+}
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+
+.div-height{
+  height: calc(100vh - 10vh);
+}
