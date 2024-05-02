@@ -6,6 +6,13 @@ const AllFilesSideBar = ({ fileType, setFileType }) => {
       <div className='w-full px-3 py-2'>
         <ul>
           <li
+            onClick={() => setFileType("")}
+            id={fileType === "" ? "selectedFolder" : ""}
+            className='px-3 py-1 cursor-pointer w-full uppercase my-1 hover:bg-red-600 hover:text-white font-semibold rounded-md'
+          >
+            all
+          </li>
+          <li
             onClick={() => setFileType("pdf")}
             id={fileType === "pdf" ? "selectedFolder" : ""}
             className='px-3 py-1 cursor-pointer w-full uppercase my-1 hover:bg-red-600 hover:text-white font-semibold rounded-md'

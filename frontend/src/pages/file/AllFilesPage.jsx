@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { searchFile } from '../../redux/action/fileAction'
 
 const AllFilesPage = () => {
-  const [fileType, setFileType] = useState("pdf")
+  const [fileType, setFileType] = useState("")
 
   const dispatch = useDispatch()
   const { user } = useSelector(state => state.user)
@@ -21,6 +21,7 @@ const AllFilesPage = () => {
           onChange={(e) => setFileType(e.target.value)}
           className='lg:hidden w-full px-3 py-1 rounded-lg outline-none bg-white text-red-600 border border-red-600'
         >
+          <option value={""}>All</option>
           <option value={"pdf"}>pdf</option>
           <option value={"docx"}>word file</option>
           <option value={"ppt"}>powerpoint</option>
@@ -37,6 +38,21 @@ const AllFilesPage = () => {
               onChange={(e) => dispatch(searchFile(e.target.value))}
             />
           </div>
+        </div>
+        <div className='h-full overflow-auto no-scrollbar'>
+          {
+            user && user.myFiles && user.myFiles.map((fileInfo) => (
+                <FileViewCard
+                  key={fileInfo?._id}
+                  id={fileInfo?._id}
+                  fileName={fileInfo?.fileName}
+                  fileType={fileInfo.fileType}
+                  fileSize={fileInfo?.fileSize}
+                  upload_date={fileInfo?.upload_date}
+                  isPublic={fileInfo?.public}
+                />
+            ))
+          }
         </div>
         {
           fileType === "pdf" && (
