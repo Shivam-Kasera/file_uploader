@@ -25,6 +25,8 @@ const LoginPage = () => {
             setError(null)
             await dispatch(login(email, password))
         }
+        setEmail("")
+        setPassword("")
         setLoading(false)
     }
     return (

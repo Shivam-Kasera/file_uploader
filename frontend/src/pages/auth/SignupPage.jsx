@@ -30,15 +30,15 @@ const SignupPage = () => {
             await dispatch(getOTP(email));
             setIsOTPInState(!isOTPInState)
         }
-        setName("")
-        setEmail("")
-        setPassword("")
         setLoading(false)
     }
 
-    const submitOtp = () => {
+    const submitOtp = async () => {
         if (Number(otp) === Number(stateOtp)) {
-            dispatch(signup(name, email, password))
+            await dispatch(signup(name, email, password))
+            setName("")
+            setEmail("")
+            setPassword("")
         } else {
             toast.error("Wrong OTP")
         }
